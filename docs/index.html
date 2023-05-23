@@ -23,7 +23,7 @@
         <!--TITLE SLIDE-->
         <section data-transition="zoom">
             <h2>Comment être réactif jusqu'au réseau ?</h2>
-            <h3>Initiation à la programmation réactive jusqu'au niveau réseau et base de données</h3>
+            <h3>Initiation au système réactif</h3>
             <img width="200" height="200" src="media/logo-maplr-v2.png" alt="Maplr logo">
         </section>
 
@@ -38,20 +38,26 @@
         <section data-transition="convex">
             <h2>De quoi va-t-on parler?</h2>
             <ul>
-                <li>Programmation réactive ???</li>
-                <li>État des lieux actuels</li>
-                <li>Des solutions pour aller plus loin</li>
-                <li>Pourquoi cette solution ?</li>
+                <li>Qu'est-ce-qu'un système réactif ?</li>
+                <li>La programmation réactive</li>
+                <li>Les bases de données</li>
+                <li>Les Communications E/S</li>
                 <li>Il est temps d'écrire du code</li>
                 <li>Questions ?</li>
             </ul>
         </section>
 
-        <!--FIRST_PONT SLIDE-->
         <section data-transition="convex">
             <section>
-                <h2>Programmation réactive ???</h2>
-                <h3>Qu'est-ce-que la programmation réactive?</h3>
+                <h2>Qu'est-ce-qu'un système reactif ?</h2>
+                <h3>Le manifest Reactive</h3>
+                <small>https://www.reactivemanifesto.org</small>
+                <img width="700" height="300" src="media/reactive.png" alt="reactive logo">
+            </section>
+        </section>
+        <section data-transition="convex">
+            <section>
+                <h2>La programmation réactive</h2>
                 <small>
                     “The term, ‘reactive’, refers to programming models that are built around reacting to
                     change — network components reacting to I/O events, UI controllers reacting to mouse events, and
@@ -60,15 +66,10 @@
                 </small>
                 <small style="color: red">https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-fn</small>
             </section>
+
             <section>
-                <h2>Programmation réactive ???</h2>
-                <h3>Le manifest Reactive</h3>
-                <small>https://www.reactivemanifesto.org</small>
-                <img width="700" height="300" src="media/reactive.png" alt="reactive logo">
-            </section>
-            <section>
-                <h2>Programmation réactive ???</h2>
-                <h3>nouveaux outils nouveaux concepts</h3>
+                <h2>La programmation réactive</h2>
+                <h3>nouveaux concepts, nouveaux outils ?</h3>
                 <table>
                     <thead>
                     <tr>
@@ -96,105 +97,100 @@
                 </table>
             </section>
             <section>
-                <h2>Programmation réactive ???</h2>
+                <h2>La programmation réactive</h2>
                 <h3>La Back pressure</h3>
-                <small>La back pressure, ou Backpressure, est un système permettant d'augmenter la résilience des systèmes
+                <small>La back pressure, ou Backpressure, est un système permettant d'augmenter la résilience des
+                    systèmes
                     pour prévenir les défaillances systémiques</small>
                 <img width="800" height="300" src="media/backpressure.png" alt="reactive logo">
             </section>
         </section>
-
-        <!--SECOND_PONT SLIDE-->
         <section data-transition="convex">
             <section>
-                <h2>État des lieux actuels</h2>
-                <h3>Base de données</h3>
+                <h2>Les bases de données</h2>
+                <h3>Relationnelles</h3>
+
+                <small> R2DBC : Reactive Relational Database Connectivity </small>
+                <small> Provides an open specification: https://github.com/r2dbc/r2dbc-spi </small>
+            </section>
+            <section>
+                <h2>Les bases de données</h2>
+                <h3>Non Relationnelle</h3>
+
+                <small> Vous devez chercher un driver Reactive spécifique à votre db </small>
+                <small> ex: https://docs.mongodb.com/drivers/reactive-streams/ </small>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Les Communications E/S</h2>
+                <h3>Une forêt de protocoles</h3>
+                <ul>
+                    <li> Websocket</li>
+                    <li> Server-Sent Events</li>
+                    <li> HTTP/2 Stream</li>
+                    <li> Rpc</li>
+                    <li> Aeron</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Les Communications E/S</h2>
+                <h3>RSocket / gRPC</h3>
                 <table>
                     <thead>
                     <tr>
-                        <th>Relationnelle</th>
-                        <th>Non Relationnelle</th>
+                        <th>RSocket</th>
+                        <th>gRPC</th>
                     </thead>
                     <tbody>
                     <tr>
                         <td>
-                            <small> R2DBC : Reactive Relational Database Connectivity </small>
-                            <small> Provides an open specification: https://github.com/r2dbc/r2dbc-spi </small>
+                            <small>
+                                Est un protocole de communication, créé á l'origine par netflix, qui implémente au
+                                niveau du
+                                protocole de communication le manifeste réactif. La communication est faite en binaire
+                                et
+                                peut-être effectuée avec plusieurs modes de transport
+                                (TCP/WebSocket/Aeron/’HTTP/2 Stream’)
+                            </small>
+                            <small>Plus d’info : https://rsocket.io/ </small>
                         </td>
                         <td>
-                            <small> Vous devez chercher un driver Reactive spécifique á votre db </small>
-                            <small> ex: https://docs.mongodb.com/drivers/reactive-streams/ </small>
+                            <small>
+                                Est un protocole créé par google basé sur HTTP/2 et proto buff pour faire du RPC (Remote
+                                procedure call) ce qui permet d'appeler du code distant comme un objet de notre service.
+                                La
+                                communication sous-jacente est effectuée en binaire (principalement)
+                            </small>
+                            <small>Plus d’infos : https://grpc.io/</small>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </section>
             <section>
-                <h2>État des lieux actuels</h2>
-                <h3>Communication entrante/sortante</h3>
+                <h2>Les Communications E/S</h2>
+                <h3>Pourquoi choisir RSocket ? </h3>
                 <ul>
-                    <li> Websocket</li>
-                    <li> Server-Sent Events</li>
-                    <li> Rpc</li>
-                    <li> HTTP/2 Stream</li>
-                    <li> Aeron</li>
+                    <li>Reactive Manifesto</li>
+                    <li>Polyglot Support</li>
+                    <li>Transport Layer Flexibility</li>
+                    <li>Fonction de communication
+                        <ul>
+                            <li>Fire-and-Forget</li>
+                            <li>Request/Response (single-response)</li>
+                            <li>Request/Stream (multi-response, finite)</li>
+                            <li>Channel</li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
         </section>
-        <section>
-            <h2>Des solutions pour aller plus loin</h2>
-            <h3>RSocket / gRPC</h3>
-            <table>
-                <thead>
-                <tr>
-                    <th>RSocket</th>
-                    <th>gRPC</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <small>
-                            Est un protocole de communication, créé á l'origine par netflix, qui implémente au niveau du
-                            protocole de communication le manifeste réactif. La communication est faite en binaire et
-                            peut-être effectuée avec plusieurs modes de transport
-                            (TCP/WebSocket/Aeron/’HTTP/2 Stream’)
-                        </small>
-                        <small>Plus d’info : https://rsocket.io/ </small>
-                    </td>
-                    <td>
-                        <small>
-                            Est un protocole créé par google basé sur HTTP/2 et proto buff pour faire du RPC (Remote
-                            procedure call) ce qui permet d'appeler du code distant comme un objet de notre service. La
-                            communication sous-jacente est effectuée en binaire (principalement)
-                        </small>
-                        <small>Plus d’infos : https://grpc.io/</small>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <small>Nous allons poursuivre avec Rsocket</small>
-        </section>
 
-        <section>
-            <h2>Pourquoi cette solution?</h2>
-            <ul>
-                <li>Message Driven</li>
-                <li>Reactive Manifesto</li>
-                <li>Polyglot Support</li>
-                <li>Transport Layer Flexibility</li>
-                <li>Fonction de communication
-                    <ul>
-                        <li>Fire-and-Forget</li>
-                        <li>Request/Response (single-response)</li>
-                        <li>Request/Stream (multi-response, finite)</li>
-                        <li>Channel</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
 
         <section data-transition="zoom">
             <h2>Il est temps d'écrire du code</h2>
+            <img width="800" height="300" src="media/ArchitectureReactive.png" alt="reactive logo">
         </section>
 
         <!--QUESTION SLIDE-->

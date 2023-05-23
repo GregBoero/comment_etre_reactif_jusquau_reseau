@@ -293,7 +293,8 @@ gulp.task('serve', () => {
 
     connect.server({
         root: root,
-        port: port,
+        port: 8087,
+
         host: host,
         livereload: true
     })
@@ -308,6 +309,7 @@ gulp.task('serve', () => {
         'css/theme/source/*.{sass,scss}',
         'css/theme/template/*.{sass,scss}',
     ], gulp.series('css-themes', 'reload'))
+
 
     gulp.watch([
         'css/*.scss',
